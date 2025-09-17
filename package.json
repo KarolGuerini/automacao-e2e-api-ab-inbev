@@ -1,0 +1,16 @@
+{
+  "name": "automacao-e2e-api-ab-inbev",
+  "version": "1.0.0",
+  "main": "Automacao de Testes com Cypress para a API e site da Serverest",
+ "scripts": {
+  "cy:open": "cypress open",
+  "cy:run": "cypress run"
+},
+  "keywords": [],
+  "author": "Karol Guerini",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^15.2.0"
+  }
+}
