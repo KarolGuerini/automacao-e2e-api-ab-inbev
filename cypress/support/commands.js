@@ -1,3 +1,15 @@
+Cypress.Commands.add('apiLogin', () => {
+  const apiUrl = Cypress.env('apiUrl')
+  const email = Cypress.env('adminEmail')
+  const password = Cypress.env('adminPassword')
+
+  return cy.request({
+    method: 'POST',
+    url: `${apiUrl}/login`,
+    body: { email, password }
+  })
+})
+
 Cypress.Commands.add('apiLoginAdmin', () => {
   const apiUrl = Cypress.env('apiUrl')
   const email = Cypress.env('adminEmail')
@@ -13,6 +25,7 @@ Cypress.Commands.add('apiLoginAdmin', () => {
     return res.body.authorization
   })
 })
+
 
 Cypress.Commands.add('apiLoginInvalid', () => {
   const apiUrl = Cypress.env('apiUrl')
@@ -32,3 +45,19 @@ Cypress.Commands.add('apiLoginInvalid', () => {
   })
 })
 
+Cypress.Commands.add('apiCreateUser', (nome, email, password, administrador = "true") => {
+  const apiUrl = Cypress.env('apiUrl')
+
+  return cy.request({
+    method: 'POST',
+    url: `${apiUrl}/usuarios`,
+    body: {
+      nome,
+      email,
+      password,
+      administrador
+    }
+  }).then((res) => {
+    return res
+  })
+})
