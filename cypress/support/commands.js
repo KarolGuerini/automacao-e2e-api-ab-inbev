@@ -1,25 +1,34 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('apiLoginAdmin', () => {
+  const apiUrl = Cypress.env('apiUrl')
+  const email = Cypress.env('adminEmail')
+  const password = Cypress.env('adminPassword')
+
+  return cy.request({
+    method: 'POST',
+    url: `${apiUrl}/login`,
+    body: { email, password }
+  }).then((res) => {
+    expect(res.status).to.eq(200)
+    expect(res.body).to.have.property('authorization').and.not.be.empty
+    return res.body.authorization
+  })
+})
+
+Cypress.Commands.add('apiLoginInvalid', () => {
+  const apiUrl = Cypress.env('apiUrl')
+  const invalidEmail = Cypress.env('invalidEmail')
+  const invalidPassword = Cypress.env('invalidPassword')
+
+  return cy.request({
+    method: 'POST',
+    url: `${apiUrl}/login`,
+    body: {
+      email: invalidEmail,
+      password: invalidPassword
+    },
+    failOnStatusCode: false
+  }).then((res) => {
+    return res
+  })
+})
+
