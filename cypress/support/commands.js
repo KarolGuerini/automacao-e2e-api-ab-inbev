@@ -79,3 +79,16 @@ Cypress.Commands.add('loginFrontendAdmin', () => {
   cy.get('[data-testid="entrar"]').click()
 })
 
+Cypress.Commands.add('cadastrarProdutoFrontend', (nome, preco, descricao, quantidade) => {
+  cy.get('[data-testid="cadastrar-produtos"]').click()   // precisa dos ()
+  cy.get('[data-testid="nome"]').type(nome)
+  cy.get('[data-testid="preco"]').type(preco)
+  cy.get('[data-testid="descricao"]').type(descricao)//cy.get('[data-testid="descricao"]')
+  cy.get('[data-testid="quantity"]').type(quantidade)
+  cy.get('[data-testid="cadastarProdutos"]').click()
+})
+
+Cypress.Commands.add('validarCadastroProduto', (nomeProduto) => {
+  cy.contains(nomeProduto).should('be.visible')
+})
+
