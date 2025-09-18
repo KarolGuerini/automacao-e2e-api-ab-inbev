@@ -71,3 +71,9 @@ npm -v
 - Para rodar os testes no modo interativo:   **npm run cy:open**
 
 - Para rodar os testes em modo headless:     **npm run cy:run**
+
+## Testes realizados com sucesso
+
+<img width="1212" height="580" alt="image" src="https://github.com/user-attachments/assets/8e6a4263-5739-48e9-a281-c7d9c12e8c96" />
+
+  
