@@ -68,3 +68,14 @@ Cypress.Commands.add('cadastrarUsuarioFrontend', (nome, email, senha) => {
   cy.get('[data-testid="password"]').type(senha)
   cy.get('[data-testid="cadastrar"]').click()
 })
+
+Cypress.Commands.add('loginFrontendAdmin', () => {
+  const email = Cypress.env('adminEmail')
+  const password = Cypress.env('adminPassword')
+
+  cy.visit('/')
+  cy.get('[data-testid="email"]').type(email)
+  cy.get('[data-testid="senha"]').type(password)
+  cy.get('[data-testid="entrar"]').click()
+})
+
