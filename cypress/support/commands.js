@@ -26,7 +26,6 @@ Cypress.Commands.add('apiLoginAdmin', () => {
   })
 })
 
-
 Cypress.Commands.add('apiLoginInvalid', () => {
   const apiUrl = Cypress.env('apiUrl')
   const invalidEmail = Cypress.env('invalidEmail')
@@ -60,4 +59,12 @@ Cypress.Commands.add('apiCreateUser', (nome, email, password, administrador = "t
   }).then((res) => {
     return res
   })
+})
+
+Cypress.Commands.add('cadastrarUsuarioFrontend', (nome, email, senha) => {
+  cy.visit('/cadastrarusuarios')
+  cy.get('[data-testid="nome"]').type(nome)
+  cy.get('[data-testid="email"]').type(email)
+  cy.get('[data-testid="password"]').type(senha)
+  cy.get('[data-testid="cadastrar"]').click()
 })

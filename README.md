@@ -1,6 +1,6 @@
 # Automação de Testes com Cypress - Serverest
 
-Este repositório contém a implementação de testes automatizados utilizando o framework **Cypress** com a linguagem **JavaScript** para testar o frontend e a API da aplicação [Serverest](https://serverest.dev/).
+Este repositório contém a implementação de testes automatizados utilizando o framework **Cypress** com a linguagem **JavaScript** para testar o frontend e a API da aplicação [Serverest API](https://serverest.dev/) e [Serverest Front](https://front.serverest.dev/).
 
 ## Cenários de Teste
 
